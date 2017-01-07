@@ -1,8 +1,6 @@
 import os
 import feedparser
 import configparser
-from sys import exit
-
 
 def getFileName(url):
     urlChunks = url.split('/')
