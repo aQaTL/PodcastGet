@@ -2,18 +2,14 @@ import os
 import feedparser
 import configparser
 
-def getFileName(url):
-    urlChunks = url.split('/')
-    return urlChunks[len(urlChunks) - 1]
-
-
 config = configparser.ConfigParser()
 config.read('../../../../config.ini')
 
 for item in config["PODCASTS"].items():
     podcastFeed = feedparser.parse(item[1])
-    epUrl = podcastFeed.entries[0].media_content[0]["url"]
-    epName = getFileName(epUrl)
+    epFeed = podcastFeed.entries[0]
+    epUrl = epFeed.enclosures[0]["href"]
+    epFilename = "\"" + epFeed.title + os.path.splitext(epUrl)[1] + "\""
     folderPath = config["PATHS"]["DefaultPath"] + item[0]
     try:
         os.chdir(folderPath)
@@ -21,5 +17,5 @@ for item in config["PODCASTS"].items():
         os.mkdir(folderPath)
         os.chdir(folderPath)
 
-    if epName not in os.listdir(os.curdir):
-        os.system("wget " + epUrl + " -O " + epName)
+    if epFilename[1:-1] not in os.listdir(os.curdir):
+        os.system("wget " + epUrl + " -O " + epFilename)
