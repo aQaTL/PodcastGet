@@ -20,3 +20,4 @@ DefaultPath = path_to_your_podcasts_folder
 podcast_name = rss_feed_address
 podcast2_name = rss_feed_address2
 ```
+Tip: I recommend adding `?format=xml` suffix to the rss feed address
