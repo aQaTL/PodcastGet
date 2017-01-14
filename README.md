@@ -2,7 +2,9 @@
 Simple python app that downloads new episodes of your favourites podcasts using RSS feeds
 
 ## Installation
+
 Before installation, make sure that your setup matches the [requirements](#requirements).
+
 1. Clone this repo `git clone https://github.com/aQaTL/PodcastGet.git` or download it as zip and unpack it.
 2. Cd into it `cd PodcastGet`.
 3. Create config file `config.ini` (see the [Creating config file](#creating-config-file) section).
