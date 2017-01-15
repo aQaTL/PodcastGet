@@ -15,7 +15,7 @@ Before installation, make sure that your setup matches the [requirements](#requi
 
 - [Python 3](https://www.python.org/) programming language (tested with version 3.6)
 - [feedparser](https://pypi.python.org/pypi/feedparser) python library (tested with version 5.2.1)
-- Wget (if you are running linux, you probably already have it installed)
+- Wget (if you are running Linux, you probably already have it installed)
 
 ## Creating config file
 
