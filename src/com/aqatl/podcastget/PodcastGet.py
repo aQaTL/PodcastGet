@@ -18,4 +18,6 @@ for item in config["PODCASTS"].items():
         os.chdir(folderPath)
 
     if epFilename[1:-1] not in os.listdir(os.curdir):
+        print("Started downloading " + epFilename + " from " + item[0] + "\n")
         os.system("wget " + epUrl + " -O " + epFilename)
+        print(epFilename + " has been downloaded into " + folderPath)
