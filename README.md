@@ -29,3 +29,8 @@ podcast_name = rss_feed_address
 podcast2_name = rss_feed_address2
 ```
 Tip: I recommend adding `?format=xml` suffix to the rss feed address
+
+## Additional features
+
+- Download all episodes:
+    - pass `-a` and podcast number (counting from 0) from config file as command line argument; for example: `python PodcastGet.py -a 0` will download all episodes from first entry.
