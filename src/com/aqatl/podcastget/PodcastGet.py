@@ -2,12 +2,17 @@ import os
 import feedparser
 import configparser
 import sys
-
+import random
+import string
 
 def downloadEp(epVendor, epUrl, epFilename, folderPath):
 	if epFilename[1:-1] not in os.listdir(os.curdir):
 		print("Started downloading " + epFilename + " from " + epVendor + "\n")
-		os.system("wget " + epUrl + " -O " + epFilename)
+
+		filePlaceholder = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+		os.system("wget " + epUrl + " -O " + filePlaceholder)
+		os.replace(filePlaceholder, epFilename[1:-1])
+
 		print(epFilename + " has been downloaded into " + folderPath)
 
 
@@ -35,14 +40,14 @@ for idx, item in enumerate(config["PODCASTS"].items()):
 		for entry in podcastFeed.entries:
 			epUrl = entry.enclosures[0]["href"]
 			downloadEp(
-				item[0],
-				epUrl,
-				"\"" + entry.title + os.path.splitext(epUrl)[1] + "\"",
-				folderPath)
+					item[0],
+					epUrl,
+					"\"" + entry.title + os.path.splitext(epUrl)[1] + "\"",
+					folderPath)
 	else:
 		epUrl = podcastFeed.entries[0].enclosures[0]["href"]
 		downloadEp(
-			item[0],
-			epUrl,
-			"\"" + podcastFeed.entries[0].title + os.path.splitext(epUrl)[1] + "\"",
-			folderPath)
+				item[0],
+				epUrl,
+				"\"" + podcastFeed.entries[0].title + os.path.splitext(epUrl)[1] + "\"",
+				folderPath)
